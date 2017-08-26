@@ -1,6 +1,6 @@
 import React from 'react'
 
-class BooksList extends React.Component {
+class BookList extends React.Component {
 
   render() {
     return (
@@ -167,4 +167,4 @@ class BooksList extends React.Component {
   }
 }
 
-export default BooksList
+export default BookList

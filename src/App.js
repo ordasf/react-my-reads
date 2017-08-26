@@ -4,7 +4,7 @@ import * as BooksAPI from './BooksAPI'
 import './App.css'
 
 import SearchBook from './SearchBook'
-import BookList from './BooksList'
+import BookList from './BookList'
 
 class BooksApp extends React.Component {
   state = {
