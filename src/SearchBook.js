@@ -13,7 +13,7 @@ class SearchBook extends React.Component {
   searchBooks = (event) => {
     BooksAPI.search(event.target.value, 20).then(data => {
       if (data.error) {
-        this.setState({results: []})
+        this.setState({ results: [] })
       } else {
         this.setState({ results: data })
       }
@@ -32,8 +32,8 @@ class SearchBook extends React.Component {
         <div className="search-books-results">
           <ol className="books-grid">
             {this.state.results.map((book) => (
-              <li>
-                <Book bookInfo={book}/>
+              <li key={book.id}>
+                <Book bookInfo={book} onChangeBookShelf={this.props.onChangeBookShelf} />
               </li>
             ))}
           </ol>
