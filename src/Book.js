@@ -1,11 +1,8 @@
 import React from 'react'
 
-class Book extends React.Component {
+import ShelfChanger from './ShelfChanger'
 
-  changeBookStatus = (event) => {
-    const targetShelf = event.target.value
-    this.props.onChangeBookShelf(this.props.bookInfo, targetShelf)
-  }
+class Book extends React.Component {
 
   render() {
     return (
@@ -16,15 +13,7 @@ class Book extends React.Component {
             height: 193,
             backgroundImage: `url(${this.props.bookInfo.imageLinks.thumbnail})` }}>
           </div>
-          <div className="book-shelf-changer">
-            <select value={this.props.bookInfo.shelf} onChange={(event) => this.changeBookStatus(event)}>
-              <option value="none" disabled>Move to...</option>
-              <option value="currentlyReading">Currently Reading</option>
-              <option value="wantToRead">Want to Read</option>
-              <option value="read">Read</option>
-              <option value="none">None</option>
-            </select>
-          </div>
+          <ShelfChanger bookInfo={this.props.bookInfo} onChangeBookShelf={this.props.onChangeBookShelf}/>
         </div>
         <div className="book-title">{this.props.bookInfo.title}</div>
         <div className="book-authors">{this.props.bookInfo.authors}</div>
