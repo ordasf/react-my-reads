@@ -15,6 +15,16 @@ class BooksApp extends React.Component {
     }
   }
 
+  updateState = (bookList) => {
+    this.setState({
+      shelves: {
+        currentlyReading: bookList.filter(book => book.shelf === 'currentlyReading'),
+        read: bookList.filter(book => book.shelf === 'read'),
+        wantToRead: bookList.filter(book => book.shelf === 'wantToRead')
+      }
+    })
+  }
+
   updateBookShelf = (book, targetShelf) => {
     BooksAPI.update(book, targetShelf).then((newShelves) => {
       let promises = []
@@ -22,13 +32,7 @@ class BooksApp extends React.Component {
       promises = promises.concat(newShelves.wantToRead.map(bookId => BooksAPI.get(bookId)))
       promises = promises.concat(newShelves.read.map(bookId => BooksAPI.get(bookId)))
       Promise.all(promises).then(results => {
-        this.setState({
-          shelves: {
-            currentlyReading: results.filter(book => book.shelf === 'currentlyReading'),
-            read: results.filter(book => book.shelf === 'read'),
-            wantToRead: results.filter(book => book.shelf === 'wantToRead')
-          }
-        })
+        this.updateState(results)
       })
     })
   }
@@ -54,13 +58,7 @@ class BooksApp extends React.Component {
 
   componentDidMount() {
     BooksAPI.getAll().then((bookList) => {
-      this.setState({
-        shelves: {
-          currentlyReading: bookList.filter(book => book.shelf === 'currentlyReading'),
-          read: bookList.filter(book => book.shelf === 'read'),
-          wantToRead: bookList.filter(book => book.shelf === 'wantToRead')
-        }
-      })
+      this.updateState(bookList)
     })
   }
 

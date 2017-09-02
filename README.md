@@ -1,4 +1,6 @@
-NOTE: The information bellow is the original content of the README.md provided for the starter code of the exercise for the udacity's React course, I decided to let it here to be used as reference during the exercise, all credit to Udacity for creating this amazing README :) 
+To run the application you need to have install npm or yarn, first install all the required dependencies with npm install and then npm run to make the magic happens
+
+NOTE: The information bellow is the original content of the README.md provided for the starter code of the exercise for the udacity's React course, I decided to let it here to be used as reference during the exercise, all credit to Udacity for creating this amazing README :)
 
 This is the starter template for the final assessment project for Udacity's React Fundamentals course, developed by [React Training](https://reacttraining.com). The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
 
