@@ -33,7 +33,11 @@ class SearchBook extends React.Component {
           <ol className="books-grid">
             {this.state.results.map((book) => (
               <li key={book.id}>
-                <Book bookInfo={book} onChangeBookShelf={this.props.onChangeBookShelf} />
+                <Book
+                  bookInfo={book}
+                  onChangeBookShelf={this.props.onChangeBookShelf}
+                  searchInBookShelves={this.props.searchInBookShelves}
+                />
               </li>
             ))}
           </ol>

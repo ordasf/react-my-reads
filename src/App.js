@@ -33,6 +33,25 @@ class BooksApp extends React.Component {
     })
   }
 
+  searchInBookShelves = (bookId) => {
+    for (const book of this.state.shelves.currentlyReading) {
+      if (bookId === book.id) {
+        return 'currentlyReading'
+      }
+    }
+    for (const book of this.state.shelves.wantToRead) {
+      if (bookId === book.id) {
+        return 'wantToRead'
+      }
+    }
+    for (const book of this.state.shelves.read) {
+      if (bookId === book.id) {
+        return 'read'
+      }
+    }
+    return 'none'
+  }
+
   componentDidMount() {
     BooksAPI.getAll().then((bookList) => {
       this.setState({
@@ -49,10 +68,14 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         <Route exact path="/" render={() => (
-          <BookList shelves={this.state.shelves} onChangeBookShelf={this.updateBookShelf} />
+          <BookList
+            shelves={this.state.shelves}
+            onChangeBookShelf={this.updateBookShelf} />
         )} />
         <Route path="/search" render={() => (
-          <SearchBook onChangeBookShelf={this.updateBookShelf}/>
+          <SearchBook
+            onChangeBookShelf={this.updateBookShelf}
+            searchInBookShelves={this.searchInBookShelves}/>
         )} />
       </div>
     )

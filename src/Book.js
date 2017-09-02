@@ -13,7 +13,11 @@ class Book extends React.Component {
             height: 193,
             backgroundImage: `url(${this.props.bookInfo.imageLinks.thumbnail})` }}>
           </div>
-          <ShelfChanger bookInfo={this.props.bookInfo} onChangeBookShelf={this.props.onChangeBookShelf}/>
+          <ShelfChanger
+            bookInfo={this.props.bookInfo}
+            onChangeBookShelf={this.props.onChangeBookShelf}
+            searchInBookShelves={this.props.searchInBookShelves}
+          />
         </div>
         <div className="book-title">{this.props.bookInfo.title}</div>
         <div className="book-authors">{this.props.bookInfo.authors}</div>
